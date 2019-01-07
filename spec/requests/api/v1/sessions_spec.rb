@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe 'Sessions API', type: :request do
-    before {host! 'api.hopii.test'}
+    before {host! 'api.ioo.test'}
     let(:user) {create(:user)}
     let(:headers) do 
         {
-            'Accept' => 'application/vnd.hopii.v1',
+            'Accept' => 'application/vnd.ioo.v1',
             'Content-Type' => Mime[:json].to_s
         }
     end

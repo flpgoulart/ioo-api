@@ -7,6 +7,6 @@ class ApiVersionConstraint
   def matches?(req)
     # vnd = vendor, para indicar que não é aplicado a outros parametros
     # neste caso, ele busca se tiver setado a versão default ou se informar a versão
-    @default || req.headers['Accept'].include?("application/vnd.hopii.v#{@version}")
+    @default || req.headers['Accept'].include?("application/vnd.ioo.v#{@version}")
   end
 end

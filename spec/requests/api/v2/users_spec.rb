@@ -9,7 +9,7 @@ RSpec.describe 'Users API', type: :request do
   #esta definição é para não repetirmos alguns trechos de código
   let(:headers) do
     {
-      'Accept' => 'application/vnd.hopii.v2',
+      'Accept' => 'application/vnd.ioo.v2',
       'Content-Type' => Mime[:json].to_s,
       'access-token' => auth_data['access-token'],
       'uid' => auth_data['uid'],
@@ -17,7 +17,7 @@ RSpec.describe 'Users API', type: :request do
     }
   end
 
-  before { host! 'api.hopii.test' }
+  before { host! 'api.ioo.test' }
 
   #para recuperar um dado -show
   describe 'GET /auth/validate_token' do

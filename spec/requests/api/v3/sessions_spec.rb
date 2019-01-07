@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe 'Sessions API', type: :request do
-    before {host! 'api.hopii.test'}
+    before {host! 'api.ioo.test'}
     let(:user) {create(:user)}
     let!(:auth_data) { user.create_new_auth_token }
     let(:headers) do 
         {
-            'Accept' => 'application/vnd.hopii.v3',
+            'Accept' => 'application/vnd.ioo.v3',
             'Content-Type' => Mime[:json].to_s,
             'Authorization' => user.auth_token,
             'access-token' => auth_data['access-token'],
