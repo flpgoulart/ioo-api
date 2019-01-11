@@ -37,6 +37,8 @@ Rails.application.routes.draw do
       resources :users, only: [:show, :create, :update, :destroy]
       resources :sessions, only: [:create, :destroy]
       #resources :target_audiences, only: [:index, :show, :create, :update, :destroy]
+      
+      resources :cities, only: [:index, :show, :create, :update, :destroy]
     end
 
   end 

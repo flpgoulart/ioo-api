@@ -4,9 +4,9 @@ class Ability
   def initialize(user)
     user ||= User.new # guest user (not logged in)
     if user.user_type==="A"
-      can :read, :all
+      can :manage, :all
     else
-      can :read, :all
+      can :manage, :all
     end
   end
 end
