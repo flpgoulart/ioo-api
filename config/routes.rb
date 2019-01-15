@@ -39,6 +39,7 @@ Rails.application.routes.draw do
       #resources :target_audiences, only: [:index, :show, :create, :update, :destroy]
       
       resources :cities, only: [:index, :show, :create, :update, :destroy]
+      resources :unit_measures, only: [:index, :show, :create, :update, :destroy]
     end
 
   end 
