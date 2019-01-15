@@ -40,6 +40,7 @@ Rails.application.routes.draw do
       
       resources :cities, only: [:index, :show, :create, :update, :destroy]
       resources :unit_measures, only: [:index, :show, :create, :update, :destroy]
+      resources :categories, only: [:index, :show, :create, :update, :destroy]
     end
 
   end 
