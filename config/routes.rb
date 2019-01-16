@@ -42,6 +42,7 @@ Rails.application.routes.draw do
       resources :unit_measures, only: [:index, :show, :create, :update, :destroy]
       resources :categories, only: [:index, :show, :create, :update, :destroy]
       resources :subcategories, only: [:index, :show, :create, :update, :destroy]
+      resources :products, only: [:index, :show, :create, :update, :destroy]
     end
 
   end 
