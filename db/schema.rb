@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190116173032) do
+ActiveRecord::Schema.define(version: 20190116195517) do
 
   create_table "businesses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -22,6 +22,18 @@ ActiveRecord::Schema.define(version: 20190116173032) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.index ["user_id"], name: "index_businesses_on_user_id", using: :btree
+  end
+
+  create_table "campaigns", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.text     "disclaimer", limit: 65535
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.string   "status"
+    t.integer  "user_id"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["user_id"], name: "index_campaigns_on_user_id", using: :btree
   end
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -100,6 +112,7 @@ ActiveRecord::Schema.define(version: 20190116173032) do
   end
 
   add_foreign_key "businesses", "users"
+  add_foreign_key "campaigns", "users"
   add_foreign_key "products", "subcategories"
   add_foreign_key "subcategories", "categories"
 end
