@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190116161347) do
+ActiveRecord::Schema.define(version: 20190116173032) do
+
+  create_table "businesses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.text     "about_us",     limit: 65535
+    t.string   "url_site"
+    t.string   "url_facebook"
+    t.text     "contact_info", limit: 65535
+    t.integer  "user_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["user_id"], name: "index_businesses_on_user_id", using: :btree
+  end
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -87,6 +99,7 @@ ActiveRecord::Schema.define(version: 20190116161347) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true, using: :btree
   end
 
+  add_foreign_key "businesses", "users"
   add_foreign_key "products", "subcategories"
   add_foreign_key "subcategories", "categories"
 end
