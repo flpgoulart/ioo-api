@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190115133408) do
+ActiveRecord::Schema.define(version: 20190116103627) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -27,6 +27,17 @@ ActiveRecord::Schema.define(version: 20190115133408) do
     t.string   "uf"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "subcategories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.text     "description",    limit: 65535
+    t.integer  "category_id"
+    t.string   "market_session"
+    t.string   "logo"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.index ["category_id"], name: "index_subcategories_on_category_id", using: :btree
   end
 
   create_table "unit_measures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -60,4 +71,5 @@ ActiveRecord::Schema.define(version: 20190115133408) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true, using: :btree
   end
 
+  add_foreign_key "subcategories", "categories"
 end
