@@ -47,6 +47,7 @@ Rails.application.routes.draw do
 
       resources :businesses, only: [:index, :show, :create, :update]
       resources :campaigns, only: [:index, :show, :create, :update]
+      resources :offers, only: [:index, :show, :create, :update]
       
     end
 
