@@ -4,7 +4,8 @@ RSpec.describe Product, type: :model do
 
   let(:product) { build(:product) }
 
-  #it { is_expected.to have_many(:stores).dependent(:destroy) }
+  it { is_expected.to have_many(:offers).dependent(:destroy) }
+  
   it { is_expected.to belong_to(:subcategory) }
 
   it { is_expected.to validate_presence_of :name }

@@ -4,7 +4,7 @@ RSpec.describe UnitMeasure, type: :model do
 
   let(:unit_measure) { build(:unit_measure) }
 
-  #it { is_expected.to have_many(:stores).dependent(:destroy) }
+  it { is_expected.to have_many(:offers).dependent(:destroy) }
 
   it { is_expected.to validate_presence_of :name }
   
