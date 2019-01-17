@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190117094354) do
+ActiveRecord::Schema.define(version: 20190117112820) do
 
   create_table "businesses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -88,6 +88,24 @@ ActiveRecord::Schema.define(version: 20190117094354) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "stores", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.integer  "store_type_id"
+    t.integer  "business_id"
+    t.integer  "city_id"
+    t.string   "cep"
+    t.string   "address_name"
+    t.string   "contact_info"
+    t.string   "status"
+    t.integer  "user_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["business_id"], name: "index_stores_on_business_id", using: :btree
+    t.index ["city_id"], name: "index_stores_on_city_id", using: :btree
+    t.index ["store_type_id"], name: "index_stores_on_store_type_id", using: :btree
+    t.index ["user_id"], name: "index_stores_on_user_id", using: :btree
+  end
+
   create_table "subcategories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.text     "description",    limit: 65535
@@ -137,5 +155,9 @@ ActiveRecord::Schema.define(version: 20190117094354) do
   add_foreign_key "offers", "unit_measures"
   add_foreign_key "offers", "users"
   add_foreign_key "products", "subcategories"
+  add_foreign_key "stores", "businesses"
+  add_foreign_key "stores", "cities"
+  add_foreign_key "stores", "store_types"
+  add_foreign_key "stores", "users"
   add_foreign_key "subcategories", "categories"
 end
