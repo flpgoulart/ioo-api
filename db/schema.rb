@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190117125013) do
+ActiveRecord::Schema.define(version: 20190117135758) do
 
   create_table "businesses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -80,6 +80,14 @@ ActiveRecord::Schema.define(version: 20190117125013) do
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
     t.index ["subcategory_id"], name: "index_products_on_subcategory_id", using: :btree
+  end
+
+  create_table "shopping_lists", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_shopping_lists_on_user_id", using: :btree
   end
 
   create_table "store_campaigns", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -167,6 +175,7 @@ ActiveRecord::Schema.define(version: 20190117125013) do
   add_foreign_key "offers", "unit_measures"
   add_foreign_key "offers", "users"
   add_foreign_key "products", "subcategories"
+  add_foreign_key "shopping_lists", "users"
   add_foreign_key "store_campaigns", "campaigns"
   add_foreign_key "store_campaigns", "stores"
   add_foreign_key "store_campaigns", "users"
