@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190116195517) do
+ActiveRecord::Schema.define(version: 20190117094354) do
 
   create_table "businesses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -51,6 +51,25 @@ ActiveRecord::Schema.define(version: 20190116195517) do
     t.string   "uf"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "offers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.string   "brand_name"
+    t.integer  "product_id"
+    t.integer  "campaign_id"
+    t.text     "disclaimer",      limit: 65535
+    t.string   "status"
+    t.integer  "unit_measure_id"
+    t.float    "product_value",   limit: 24
+    t.float    "offer_value",     limit: 24
+    t.integer  "user_id"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.index ["campaign_id"], name: "index_offers_on_campaign_id", using: :btree
+    t.index ["product_id"], name: "index_offers_on_product_id", using: :btree
+    t.index ["unit_measure_id"], name: "index_offers_on_unit_measure_id", using: :btree
+    t.index ["user_id"], name: "index_offers_on_user_id", using: :btree
   end
 
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -113,6 +132,10 @@ ActiveRecord::Schema.define(version: 20190116195517) do
 
   add_foreign_key "businesses", "users"
   add_foreign_key "campaigns", "users"
+  add_foreign_key "offers", "campaigns"
+  add_foreign_key "offers", "products"
+  add_foreign_key "offers", "unit_measures"
+  add_foreign_key "offers", "users"
   add_foreign_key "products", "subcategories"
   add_foreign_key "subcategories", "categories"
 end
