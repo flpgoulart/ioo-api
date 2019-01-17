@@ -2,6 +2,7 @@ class Campaign < ApplicationRecord
   belongs_to :user
 
   has_many :offers, dependent: :destroy
+  has_many :store_campaigns, dependent: :destroy
 
   validates_presence_of :name
   validates_presence_of :status

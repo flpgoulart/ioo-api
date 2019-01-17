@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :campaigns, dependent: :destroy
   has_many :offers, dependent: :destroy
   has_many :stores, dependent: :destroy
+  has_many :store_campaigns, dependent: :destroy
 
   def info
     "#{email} - #{created_at} - Token: #{Devise.friendly_token}"

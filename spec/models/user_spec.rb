@@ -28,6 +28,7 @@ RSpec.describe User, type: :model do
   it { is_expected.to have_many(:campaigns).dependent(:destroy) }
   it { is_expected.to have_many(:offers).dependent(:destroy) }
   it { is_expected.to have_many(:stores).dependent(:destroy) }
+  it { is_expected.to have_many(:store_campaigns).dependent(:destroy) }
 
   #este metodo é utilizando o shouda_matric, para validar a mesma instrução acima, usando apenas 1 linha
   #it { is_expected.to validate_presence_of(:name) }

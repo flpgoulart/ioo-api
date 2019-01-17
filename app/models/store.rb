@@ -4,6 +4,8 @@ class Store < ApplicationRecord
   belongs_to :city
   belongs_to :user
 
+  has_many :store_campaigns, dependent: :destroy
+
   validates_presence_of :name
   validates_presence_of :user_id
   validates_presence_of :store_type_id

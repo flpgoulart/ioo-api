@@ -9,7 +9,7 @@ RSpec.describe Store, type: :model do
   it { is_expected.to belong_to(:business) }
   it { is_expected.to belong_to(:city) }
 
-  #it { is_expected.to have_many(:products).dependent(:destroy) }
+  it { is_expected.to have_many(:store_campaigns).dependent(:destroy) }
 
   it { is_expected.to validate_presence_of :name }
   it { is_expected.to validate_presence_of :user_id }
