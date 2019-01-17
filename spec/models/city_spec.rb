@@ -4,7 +4,7 @@ RSpec.describe City, type: :model do
 
   let(:city) { build(:city) }
 
-  #it { is_expected.to have_many(:stores).dependent(:destroy) }
+  it { is_expected.to have_many(:stores).dependent(:destroy) }
 
   it { is_expected.to validate_presence_of :name }
   it { is_expected.to validate_presence_of :uf }

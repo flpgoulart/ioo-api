@@ -4,6 +4,8 @@ RSpec.describe StoreType, type: :model do
 
   let(:store_type) { build(:store_type) }
 
+  it { is_expected.to have_many(:stores).dependent(:destroy) }
+  
   it { is_expected.to validate_presence_of :name }
   
   # este passo é importante listar todos os campos previstos na aplicação, caso tenha algum não previsto, ele acusará no teste

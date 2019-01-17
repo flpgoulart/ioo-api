@@ -5,7 +5,7 @@ RSpec.describe Business, type: :model do
   let(:business) { build(:business) }
 
   it { is_expected.to belong_to(:user) }
-  #it { is_expected.to have_many(:products).dependent(:destroy) }
+  it { is_expected.to have_many(:stores).dependent(:destroy) }
   
   it { is_expected.to validate_presence_of :name }
   it { is_expected.to validate_presence_of :user_id }
