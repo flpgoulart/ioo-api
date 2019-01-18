@@ -4,6 +4,8 @@ class Offer < ApplicationRecord
   belongs_to :unit_measure
   belongs_to :user
 
+  has_many :shopping_list_offers, dependent: :destroy
+  
   validates_presence_of :name
   validates_presence_of :user_id
   validates_presence_of :product_id

@@ -9,7 +9,7 @@ RSpec.describe Offer, type: :model do
   it { is_expected.to belong_to(:campaign) }
   it { is_expected.to belong_to(:unit_measure) }
 
-  #it { is_expected.to have_many(:products).dependent(:destroy) }
+  it { is_expected.to have_many(:shopping_list_offers).dependent(:destroy) }
   
   it { is_expected.to validate_presence_of :name }
   it { is_expected.to validate_presence_of :user_id }
