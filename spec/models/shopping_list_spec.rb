@@ -1,5 +1,20 @@
 require 'rails_helper'
 
 RSpec.describe ShoppingList, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  let(:shopping_list) { build(:shopping_list) }
+
+  it { is_expected.to belong_to(:user) }
+  
+  #it { is_expected.to have_many(:offers).dependent(:destroy) }
+  
+  it { is_expected.to validate_presence_of :name }
+  
+  it { is_expected.to validate_presence_of :user_id }
+  
+  # este passo é importante listar todos os campos previstos na aplicação, caso tenha algum não previsto, ele acusará no teste
+  it { is_expected.to respond_to(:name) }
+  it { is_expected.to respond_to(:user_id) }
+
+
 end
