@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190117135758) do
+ActiveRecord::Schema.define(version: 20190118104535) do
 
   create_table "businesses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -80,6 +80,18 @@ ActiveRecord::Schema.define(version: 20190117135758) do
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
     t.index ["subcategory_id"], name: "index_products_on_subcategory_id", using: :btree
+  end
+
+  create_table "shopping_list_offers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "shopping_list_id"
+    t.integer  "offer_id"
+    t.string   "status"
+    t.integer  "user_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["offer_id"], name: "index_shopping_list_offers_on_offer_id", using: :btree
+    t.index ["shopping_list_id"], name: "index_shopping_list_offers_on_shopping_list_id", using: :btree
+    t.index ["user_id"], name: "index_shopping_list_offers_on_user_id", using: :btree
   end
 
   create_table "shopping_lists", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -175,6 +187,9 @@ ActiveRecord::Schema.define(version: 20190117135758) do
   add_foreign_key "offers", "unit_measures"
   add_foreign_key "offers", "users"
   add_foreign_key "products", "subcategories"
+  add_foreign_key "shopping_list_offers", "offers"
+  add_foreign_key "shopping_list_offers", "shopping_lists"
+  add_foreign_key "shopping_list_offers", "users"
   add_foreign_key "shopping_lists", "users"
   add_foreign_key "store_campaigns", "campaigns"
   add_foreign_key "store_campaigns", "stores"
