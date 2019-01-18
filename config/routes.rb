@@ -50,6 +50,8 @@ Rails.application.routes.draw do
       resources :offers, only: [:index, :show, :create, :update]
       resources :stores, only: [:index, :show, :create, :update]
       resources :store_campaigns, only: [:index, :show, :create, :update]
+
+      resources :shopping_lists, only: [:index, :show, :create, :update]
       
     end
 
