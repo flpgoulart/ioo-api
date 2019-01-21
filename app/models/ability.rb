@@ -26,7 +26,7 @@ class Ability
         can :manage, Offer, user_id: user.id
         can :manage, Store, user_id: user.id
         can :manage, StoreCampaign, user_id: user.id
-        #can :manage, Reports
+        can :rep, :offers
       end
     end
   end
