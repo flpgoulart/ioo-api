@@ -15,6 +15,8 @@ class Api::V3::OffersController < Api::V3::BaseController
     def create
         offer = current_user.offers.build(offer_params)
         
+        offer.status = "R"
+
         if offer.save
             render json: offer, status: 201
         else
@@ -25,11 +27,34 @@ class Api::V3::OffersController < Api::V3::BaseController
     def update
         offer = current_user.offers.find(params[:id])
 
-        if offer.update_attributes(offer_params)
-            render json: offer, status: 200
+        #se o plano for o limitado
+        if current_user.user_type == "E"
+            # verifica quantos planos tem cadastrado como [A]tivo
+            if offer_params[:status] == "A" && current_user.offers.where(:status => "A").count >= 10
+                #padroniza a chave de erro especifica
+                error_info = {
+                    :error => "limit-plan",
+                    :status => 909,
+                    :description => "Limite do plano excedido (10 Ofertas Ativas)"
+                }
+
+                render json: { errors: error_info }, status: 909
+            else
+                if offer.update_attributes(offer_params)
+                    render json: offer, status: 200
+                else
+                    render json: { errors: offer.errors }, status: 422
+                end
+            end 
         else
-            render json: { errors: offer.errors }, status: 422
-        end
+            if offer.update_attributes(offer_params)
+                render json: offer, status: 200
+            else
+                render json: { errors: offer.errors }, status: 422
+            end    
+        end 
+
+
     end
 
     # def destroy
