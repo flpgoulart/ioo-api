@@ -54,6 +54,12 @@ Rails.application.routes.draw do
       resources :shopping_lists, only: [:index, :show, :create, :update]
       resources :shopping_list_offers, only: [:index, :show, :create, :update]
       
+      # resources :reports do
+      #   collection do
+      #     post :offers
+      #   end
+      # end
+      
     end
 
   end 

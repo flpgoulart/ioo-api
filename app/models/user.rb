@@ -22,6 +22,10 @@ class User < ApplicationRecord
     "#{email} - #{created_at} - Token: #{Devise.friendly_token}"
   end
 
+  def admin?
+    self.user_type==="A"
+  end
+
   def generate_authentication_token!
     begin
       self.auth_token = Devise.friendly_token
