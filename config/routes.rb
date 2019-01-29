@@ -1,6 +1,8 @@
 require 'api_version_constraint'
 
 Rails.application.routes.draw do
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
 
   devise_for :users, only: [:sessions], controllers: {sessions: 'api/v1/sessions'}
 
@@ -54,13 +56,13 @@ Rails.application.routes.draw do
       resources :shopping_lists, only: [:index, :show, :create, :update]
       resources :shopping_list_offers, only: [:index, :show, :create, :update]
       
-      resources :reports do
+      resources :search do
         collection do
-          post :rep_offers
-        end
-      end
-      
+          get :offers
+        end 
+      end 
     end
 
   end 
+  
 end
