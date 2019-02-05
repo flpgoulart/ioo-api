@@ -58,7 +58,7 @@ Rails.application.routes.draw do
       
       resources :search do
         collection do
-          get :offers
+          get :offers, :cities, :businesses, :stores, :categories, :subcategories 
         end 
       end 
     end
