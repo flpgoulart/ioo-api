@@ -10,7 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190118104535) do
+ActiveRecord::Schema.define(version: 20190205175633) do
+
+  create_table "business_accounts", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.string "cnpj"
+    t.string "insce"
+    t.string "inscm"
+    t.string "city_name"
+    t.string "uf"
+    t.string "email"
+    t.integer "ddd_phone"
+    t.integer "phone"
+    t.integer "ddd_mobile"
+    t.integer "mobile"
+    t.string "address_name"
+    t.string "cep"
+    t.string "plan"
+    t.string "status"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_business_accounts_on_user_id"
+  end
 
   create_table "businesses", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -180,6 +202,7 @@ ActiveRecord::Schema.define(version: 20190118104535) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "business_accounts", "users"
   add_foreign_key "businesses", "users"
   add_foreign_key "campaigns", "users"
   add_foreign_key "offers", "campaigns"
