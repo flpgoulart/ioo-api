@@ -5,6 +5,7 @@ FactoryGirl.define do
       disclaimer { Faker::Lorem.paragraph }
       product_value { Faker::Commerce.price }
       offer_value { Faker::Commerce.price }
+      qty_views { Faker::Number.number(4) }
       status { 'R' }
   
       product

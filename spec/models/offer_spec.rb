@@ -31,6 +31,7 @@ RSpec.describe Offer, type: :model do
   it { is_expected.to respond_to(:unit_measure_id) }
   it { is_expected.to respond_to(:product_value) }
   it { is_expected.to respond_to(:offer_value) }
+  it { is_expected.to respond_to(:qty_views) }
 
 
 end

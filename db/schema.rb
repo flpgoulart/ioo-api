@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190206185938) do
+ActiveRecord::Schema.define(version: 20190206193716) do
 
   create_table "billings", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "document"
@@ -101,6 +101,7 @@ ActiveRecord::Schema.define(version: 20190206185938) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "qty_views"
     t.index ["campaign_id"], name: "index_offers_on_campaign_id"
     t.index ["product_id"], name: "index_offers_on_product_id"
     t.index ["unit_measure_id"], name: "index_offers_on_unit_measure_id"
