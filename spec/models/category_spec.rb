@@ -5,6 +5,7 @@ RSpec.describe Category, type: :model do
   let(:category) { build(:category) }
 
   it { is_expected.to have_many(:subcategories).dependent(:destroy) }
+  it { is_expected.to have_many(:personal_pages).dependent(:destroy) }
 
 
   it { is_expected.to validate_presence_of :name }
