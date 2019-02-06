@@ -48,6 +48,7 @@ Rails.application.routes.draw do
       resources :store_types, only: [:index, :show, :create, :update, :destroy]
 
       resources :businesses, only: [:index, :show, :create, :update]
+      resources :business_accounts, only: [:index, :show, :create, :update]
       resources :campaigns, only: [:index, :show, :create, :update]
       resources :offers, only: [:index, :show, :create, :update]
       resources :stores, only: [:index, :show, :create, :update]

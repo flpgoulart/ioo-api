@@ -1,17 +1,17 @@
 FactoryGirl.define do
     factory :business_account do
       name { Faker::Company.name }
-      cnpj { Faker::Company.french_siret_number }
-      insce { Faker::Company.polish_taxpayer_identification_number }
-      inscm { Faker::Company.czech_organisation_number } 
+      cnpj { Faker::Number.number(14) }
+      insce { Faker::Number.number(12) }
+      inscm { Faker::Number.number(12) } 
 
       email { Faker::Internet.email }
 
       ddd_phone { Faker::Number.number(2) }
-      phone { Faker::Company.norwegian_organisation_number } 
+      phone { Faker::Number.number(8) } 
 
       ddd_mobile { Faker::Number.number(2) }
-      mobile { Faker::Company.norwegian_organisation_number } 
+      mobile { Faker::Number.number(9) } 
 
       city_name { Faker::Address.city }
       uf { Faker::Address.state_abbr }
