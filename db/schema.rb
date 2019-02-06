@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190206134549) do
+ActiveRecord::Schema.define(version: 20190206185938) do
 
   create_table "billings", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "document"
@@ -105,6 +105,15 @@ ActiveRecord::Schema.define(version: 20190206134549) do
     t.index ["product_id"], name: "index_offers_on_product_id"
     t.index ["unit_measure_id"], name: "index_offers_on_unit_measure_id"
     t.index ["user_id"], name: "index_offers_on_user_id"
+  end
+
+  create_table "personal_pages", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "user_id"
+    t.integer "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_personal_pages_on_category_id"
+    t.index ["user_id"], name: "index_personal_pages_on_user_id"
   end
 
   create_table "products", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -223,6 +232,8 @@ ActiveRecord::Schema.define(version: 20190206134549) do
   add_foreign_key "offers", "products"
   add_foreign_key "offers", "unit_measures"
   add_foreign_key "offers", "users"
+  add_foreign_key "personal_pages", "categories"
+  add_foreign_key "personal_pages", "users"
   add_foreign_key "products", "subcategories"
   add_foreign_key "shopping_list_offers", "offers"
   add_foreign_key "shopping_list_offers", "shopping_lists"
