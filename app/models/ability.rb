@@ -19,6 +19,7 @@ class Ability
         can :manage, Store, user_id: user.id
         can :manage, StoreCampaign, user_id: user.id
         can :manage, BusinessAccount, user_id: user.id
+        can :read, Billing, user_id: user.id
       elsif user.user_type==="B"
         can :manage, ShoppingList, user_id: user.id
         can :manage, ShoppingListOffer, user_id: user.id
@@ -28,6 +29,7 @@ class Ability
         can :manage, Store, user_id: user.id
         can :manage, StoreCampaign, user_id: user.id
         can :manage, BusinessAccount, user_id: user.id
+        can :read, Billing, user_id: user.id
       end
     end
   end
