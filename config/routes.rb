@@ -57,6 +57,7 @@ Rails.application.routes.draw do
 
       resources :shopping_lists, only: [:index, :show, :create, :update]
       resources :shopping_list_offers, only: [:index, :show, :create, :update]
+      resources :personal_pages, only: [:index, :create, :destroy]
       
       resources :search do
         collection do
