@@ -6,4 +6,8 @@ class Subcategory < ApplicationRecord
   validates_presence_of :name
   validates_presence_of :category_id
   
+  def category_name
+    Category.find(category_id).name
+  end
+
 end
