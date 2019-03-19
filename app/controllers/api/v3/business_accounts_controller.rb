@@ -15,6 +15,8 @@ class Api::V3::BusinessAccountsController < Api::V3::BaseController
     def create
         business_account = current_user.business_accounts.build(business_account_params)
         
+		business_account.status = 'A'
+		
         if business_account.save
             render json: business_account, status: 201
         else
