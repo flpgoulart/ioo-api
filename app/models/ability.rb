@@ -21,6 +21,8 @@ class Ability
         can :manage, StoreCampaign, user_id: user.id
         can :manage, BusinessAccount, user_id: user.id
         can :read, Billing, user_id: user.id
+		can :read, City
+		can :read, StoreType
       elsif user.user_type==="B" #Plano Full
         can :manage, ShoppingList, user_id: user.id
         can :manage, ShoppingListOffer, user_id: user.id
@@ -31,6 +33,8 @@ class Ability
         can :manage, StoreCampaign, user_id: user.id
         can :manage, BusinessAccount, user_id: user.id
         can :read, Billing, user_id: user.id
+		can :read, City
+		can :read, StoreType
       end
     end
   end

@@ -15,4 +15,17 @@ class Store < ApplicationRecord
   validates_presence_of :address_name
   validates_presence_of :status
 
+  
+  def store_type_name
+    StoreType.find(store_type_id).name 
+  end
+
+  def business_name
+	Business.find(business_id).name
+  end
+
+  def city_name
+    City.find(city_id).name + "/" + City.find(city_id).uf
+  end
+
 end

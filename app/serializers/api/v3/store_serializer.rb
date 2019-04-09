@@ -1,5 +1,5 @@
 class Api::V3::StoreSerializer < ActiveModel::Serializer
-  attributes :id, :name, :cep, :address_name, :contact_info, :status, :store_type_id, :business_id, :city_id, :user_id, :created_at, :updated_at
+  attributes :id, :name, :cep, :address_name, :contact_info, :status, :store_type_id, :business_id, :city_id, :user_id, :created_at, :updated_at, :store_type_name, :business_name, :city_name
 
   belongs_to :user  
   belongs_to :store_type
