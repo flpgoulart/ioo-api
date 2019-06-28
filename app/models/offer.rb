@@ -15,5 +15,13 @@ class Offer < ApplicationRecord
   validates_presence_of :offer_value
   validates_presence_of :brand_name
 
+  def campaign_name
+    Campaign.find(campaign_id).name
+  end
+
+  def product_name
+    Product.find(product_id).name
+  end
+
 
 end

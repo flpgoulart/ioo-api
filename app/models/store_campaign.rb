@@ -7,5 +7,11 @@ class StoreCampaign < ApplicationRecord
   validates_presence_of :store_id
   validates_presence_of :campaign_id
   validates_presence_of :user_id
+  
+  validates_uniqueness_of :store_id, scope: :campaign_id
+  
+  def store_name
+    Store.find(store_id).name
+  end
 
 end
