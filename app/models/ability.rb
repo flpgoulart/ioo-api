@@ -23,6 +23,8 @@ class Ability
         can :read, Billing, user_id: user.id
 		can :read, City
 		can :read, StoreType
+		can :read, UnitMeasure
+		can :read, Product
       elsif user.user_type==="B" #Plano Full
         can :manage, ShoppingList, user_id: user.id
         can :manage, ShoppingListOffer, user_id: user.id
@@ -35,6 +37,8 @@ class Ability
         can :read, Billing, user_id: user.id
 		can :read, City
 		can :read, StoreType
+		can :read, UnitMeasure
+		can :read, Product
       end
     end
   end

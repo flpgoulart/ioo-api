@@ -11,7 +11,12 @@ class Api::V3::OffersController < Api::V3::BaseController
         offer = current_user.offers.find(params[:id])
 
         #Adiciona um ao contador de visualização
-        offer.qty_views += 1
+		if offer.qty_views.nil?
+			offer.qty_views = 0
+		else
+			offer.qty_views += 1
+		end
+		
         offer.save 
 
         render json: offer, status: 200
