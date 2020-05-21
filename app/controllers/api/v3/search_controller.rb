@@ -1,5 +1,9 @@
 class Api::V3::SearchController < ApplicationController
 
+	def clear_session
+		reset_session
+	end 
+
     def offers
 
         if search_params[:city_id].present?
